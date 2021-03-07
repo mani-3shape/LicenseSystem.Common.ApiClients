@@ -25,6 +25,7 @@ steps:
     patchVersion: $(BuildID)
 
 - task: NuGetCommand@2
+  displayName: 'Nuget Push'
   inputs:
     command: 'push'
     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
