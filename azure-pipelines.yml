@@ -20,12 +20,9 @@ steps:
   displayName: 'dotnet pack $(buildConfiguration)'
   inputs:
     command: 'pack'
-    configuration: $(buildConfiguration)
     packagesToPack: '**/*.csproj'
-    versioningScheme: 'byPrereleaseNumber'
-    majorVersion: '1'
-    minorVersion: '0'
-    patchVersion: '0'
+    configuration: '$(buildConfiguration)'
+    versioningScheme: 'byBuildNumber'
 
 - task: NuGetCommand@2
   inputs:
