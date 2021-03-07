@@ -22,8 +22,8 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     configuration: '$(buildConfiguration)'
-    versioningScheme: 'byEnvVar'
-    versionEnvVar: 'BUILD_BUILDNUMBER'
+    versioningScheme: byPrereleaseNumber
+    patchVersion: $(Build.BuildId)
 
 - task: NuGetCommand@2
   inputs:
