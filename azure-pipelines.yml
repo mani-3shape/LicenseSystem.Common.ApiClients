@@ -17,11 +17,12 @@ steps:
     arguments: '--configuration $(buildConfiguration)'
 
 - task: NuGetCommand@2
-  displayName: 'dotnet pack $(buildConfiguration)'
+  displayName: 'dotnet pack $(buildConfiguration) $(BuildID)'
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     configuration: '$(buildConfiguration)'
+    versioningScheme: off
     patchVersion: $(BuildID)
 
 - task: NuGetCommand@2
