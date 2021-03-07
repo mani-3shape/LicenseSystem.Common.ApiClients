@@ -13,7 +13,7 @@ steps:
   inputs:
     command: build
     projects: '**/*.csproj'
-    arguments: '--configuration "Debug"'
+    arguments: '--configuration "Release"'
 
 - task: NuGetCommand@2
   displayName: 'dotnet pack $(buildConfiguration)'
