@@ -13,12 +13,13 @@ steps:
   inputs:
     command: build
     projects: '**/*.csproj'
-    arguments: '--configuration "Release"'
+    arguments: '--configuration $(buildConfiguration)'
 
 - task: NuGetCommand@2
   displayName: 'dotnet pack $(buildConfiguration)'
   inputs:
     command: 'pack'
+    configuration: $(buildConfiguration)
     packagesToPack: '**/*.csproj'
     versioningScheme: 'byPrereleaseNumber'
     majorVersion: '1'
