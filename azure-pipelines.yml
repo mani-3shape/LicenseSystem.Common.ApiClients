@@ -22,7 +22,7 @@ steps:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     configuration: '$(buildConfiguration)'
-    versioningScheme: 'off'
+    patchVersion: $(BuildID)
 
 - task: NuGetCommand@2
   inputs:
