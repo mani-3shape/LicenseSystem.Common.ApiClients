@@ -8,7 +8,15 @@ variables:
  - group: cloudlicense-common-apiclients
  - group: nuget-source
 
+resources:
+  repositories:
+  - repository: templates
+    type: github
+    name: 3ShapeInternal/LicenseSystem.DevOpsTemplates
+    endpoint: 3ShapeInternal
+
 steps:
+- template: build/v1/apply-git-version.yml@templates
 - task: DotNetCoreCLI@2
   displayName: Build $(buildConfiguration)
   inputs:
