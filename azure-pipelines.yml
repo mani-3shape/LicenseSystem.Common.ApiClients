@@ -31,7 +31,7 @@ steps:
     packagesToPack: '**/*.csproj'
     configuration: '$(buildConfiguration)'
     versioningScheme: 'byEnvVar'
-    versionEnvVar: '$(GitVersion.SemVer)'
+    versionEnvVar: '$(FullSemVer)'
 
 - task: NuGetCommand@2
   displayName: 'Nuget Push'
