@@ -1,0 +1,18 @@
+trigger:
+- master
+pool:
+  vmImage: 'windows-latest'
+variables:
+ -group: cloudlicense-common-apiclients
+steps:
+- task: NuGetCommand@2
+  inputs:
+    command: 'pack'
+    packagesToPack: '**/*.csproj'
+    versioningScheme: 'byBuildNumber'
+- task: NuGetCommand@2
+  inputs:
+    command: 'push'
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+    nuGetFeedType: 'internal'
+    publishVstsFeed: '6b88c8c8-3b17-46b6-b19d-5bef21ee5b26/829109b3-a654-4810-a0ee-09d0efb0fd3b'
