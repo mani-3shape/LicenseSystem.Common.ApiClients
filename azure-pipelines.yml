@@ -1,16 +1,20 @@
 trigger:
 - master
+
 pool:
   vmImage: 'windows-latest'
+
 variables:
  -group: cloudlicense-common-apiclients
+
 steps:
 - task: DotNetCoreCLI@2
   displayName: Build $(buildConfiguration)
   inputs:
     command: build
     projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+    arguments: '--configuration "Debug"'
+
 - task: NuGetCommand@2
   displayName: 'dotnet pack $(buildConfiguration)'
   inputs:
@@ -20,6 +24,7 @@ steps:
     majorVersion: '1'
     minorVersion: '0'
     patchVersion: '0'
+
 - task: NuGetCommand@2
   inputs:
     command: 'push'
