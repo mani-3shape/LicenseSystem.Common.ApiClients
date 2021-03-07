@@ -5,6 +5,17 @@ pool:
 variables:
  -group: cloudlicense-common-apiclients
 steps:
+- task: DotNetCoreCLI@2
+  displayName: Build
+  inputs:
+    command: build
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '**/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
 - task: NuGetCommand@2
   inputs:
     command: 'pack'
