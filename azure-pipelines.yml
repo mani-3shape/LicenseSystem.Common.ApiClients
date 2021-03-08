@@ -23,7 +23,7 @@ steps:
     script: |
       # Write your commands here
       
-      echo '$FullSemVer'
+      echo $FullSemVer
 # - task: DotNetCoreCLI@2
 #   displayName: Build $(buildConfiguration) $FullSemVer
 #   inputs:
