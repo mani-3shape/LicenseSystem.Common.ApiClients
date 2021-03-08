@@ -25,13 +25,13 @@ steps:
     arguments: '--configuration $(buildConfiguration)'
 
 - task: NuGetCommand@2
-  displayName: 'dotnet pack $(buildConfiguration) $(GitVersion.SemVer)'
+  displayName: 'dotnet pack $(buildConfiguration)'
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     configuration: '$(buildConfiguration)'
     versioningScheme: 'byEnvVar'
-    versionEnvVar: '$(Build.BuildId)'
+    versionEnvVar: '$(GitVersion.SemVer)'
 
 - task: NuGetCommand@2
   displayName: 'Nuget Push'
