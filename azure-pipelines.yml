@@ -2,7 +2,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-18.04'
 
 variables:
  - group: cloudlicense-common-apiclients
@@ -31,7 +31,7 @@ steps:
     packagesToPack: '**/*.csproj'
     configuration: '$(buildConfiguration)'
     versioningScheme: 'byEnvVar'
-    versionEnvVar: '$(FullSemVer)'
+    versionEnvVar: 'FullSemVer'
 
 - task: NuGetCommand@2
   displayName: 'Nuget Push'
