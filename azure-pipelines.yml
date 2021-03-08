@@ -22,8 +22,9 @@ steps:
     targetType: 'inline'
     script: |
       # Write your commands here
-      
+      echo 'Test'
       echo $FullSemVer
+      echo 'Test'
 # - task: DotNetCoreCLI@2
 #   displayName: Build $(buildConfiguration) $FullSemVer
 #   inputs:
