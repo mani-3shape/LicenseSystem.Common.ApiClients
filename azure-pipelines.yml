@@ -18,20 +18,20 @@ resources:
 steps:
 - template: build/v1/apply-git-version.yml@templates
 - task: DotNetCoreCLI@2
-  displayName: Build $(buildConfiguration)
+  displayName: Build $(buildConfiguration) $(FullSemVer)
   inputs:
     command: build
     projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration)'
 
 - task: NuGetCommand@2
-  displayName: 'dotnet pack $(buildConfiguration) $(version)'
+  displayName: 'dotnet pack $(buildConfiguration) $(FullSemVer)'
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
     configuration: '$(buildConfiguration)'
     versioningScheme: 'byEnvVar'
-    versionEnvVar: '$(version)'
+    versionEnvVar: '$(FullSemVer)'
 
 - task: NuGetCommand@2
   displayName: 'Nuget Push'
