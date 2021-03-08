@@ -25,7 +25,7 @@ steps:
     arguments: '--configuration $(buildConfiguration)'
 
 - task: NuGetCommand@2
-  displayName: 'dotnet pack $(buildConfiguration)'
+  displayName: 'dotnet pack $(buildConfiguration) $(GitVersion.SemVer)'
   inputs:
     command: 'pack'
     packagesToPack: '**/*.csproj'
