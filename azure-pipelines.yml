@@ -17,6 +17,13 @@ resources:
 
 steps:
 - template: build/v1/apply-git-version.yml@templates
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      
+      echo '$FullSemVer'
 - task: DotNetCoreCLI@2
   displayName: Build $(buildConfiguration) $FullSemVer
   inputs:
