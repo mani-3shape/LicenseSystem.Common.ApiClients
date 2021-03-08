@@ -24,26 +24,26 @@ steps:
       # Write your commands here
       
       echo '$FullSemVer'
-- task: DotNetCoreCLI@2
-  displayName: Build $(buildConfiguration) $FullSemVer
-  inputs:
-    command: build
-    projects: '**/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
+# - task: DotNetCoreCLI@2
+#   displayName: Build $(buildConfiguration) $FullSemVer
+#   inputs:
+#     command: build
+#     projects: '**/*.csproj'
+#     arguments: '--configuration $(buildConfiguration)'
 
-- task: NuGetCommand@2
-  displayName: 'dotnet pack $(buildConfiguration) $(FullSemVer)'
-  inputs:
-    command: 'pack'
-    packagesToPack: '**/*.csproj'
-    configuration: '$(buildConfiguration)'
-    versioningScheme: 'byEnvVar'
-    versionEnvVar: 'FullSemVer'
+# - task: NuGetCommand@2
+#   displayName: 'dotnet pack $(buildConfiguration) $(FullSemVer)'
+#   inputs:
+#     command: 'pack'
+#     packagesToPack: '**/*.csproj'
+#     configuration: '$(buildConfiguration)'
+#     versioningScheme: 'byEnvVar'
+#     versionEnvVar: 'FullSemVer'
 
-- task: NuGetCommand@2
-  displayName: 'Nuget Push'
-  inputs:
-    command: 'push'
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
-    nuGetFeedType: 'internal'
-    publishVstsFeed: '6b88c8c8-3b17-46b6-b19d-5bef21ee5b26/829109b3-a654-4810-a0ee-09d0efb0fd3b'
+# - task: NuGetCommand@2
+#   displayName: 'Nuget Push'
+#   inputs:
+#     command: 'push'
+#     packagesToPush: '$(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg'
+#     nuGetFeedType: 'internal'
+#     publishVstsFeed: '6b88c8c8-3b17-46b6-b19d-5bef21ee5b26/829109b3-a654-4810-a0ee-09d0efb0fd3b'
