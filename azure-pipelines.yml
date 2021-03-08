@@ -18,7 +18,7 @@ resources:
 steps:
 - template: build/v1/apply-git-version.yml@templates
 - task: DotNetCoreCLI@2
-  displayName: Build $(buildConfiguration) $(FullSemVer)
+  displayName: Build $(buildConfiguration) $FullSemVer
   inputs:
     command: build
     projects: '**/*.csproj'
