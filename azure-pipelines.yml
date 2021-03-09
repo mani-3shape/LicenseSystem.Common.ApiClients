@@ -18,6 +18,14 @@ resources:
 steps:
 - template: build/v1/apply-git-version.yml@templates
 - task: Bash@3
+  displayName: Init git global config
+  inputs:
+    targetType: 'inline'
+    script: |
+      git config --global user.email "EMAIL-OF-PIPELINE-USER"
+      git config --global user.name "CI / CD Pipeline"
+- task: Bash@3
+  displayName: Create Git tag for current version
   inputs:
     targetType: 'inline'
     script: |
