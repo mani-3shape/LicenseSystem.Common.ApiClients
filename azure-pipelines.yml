@@ -22,7 +22,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      git config --global user.email "EMAIL-OF-PIPELINE-USER"
+      git config --global user.email "kanagamanikandan.duraisamy@3shape.com"
       git config --global user.name "CI / CD Pipeline"
 - task: Bash@3
   displayName: Create Git tag for current version
